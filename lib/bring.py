@@ -6,6 +6,11 @@ class Bring(object):
     BRING_LOCATION_API =    "http://fraktguide.bring.no/fraktguide/api/postalCode.json?country=%s&pnr=%s"
 
     def tracking(self, tr_nr):
+        """Returns tracking data
+            DATA: (WEIGHT_KG, STATUS, CITY, DESCRIPTION, COUNTRY, COUNTRY_CODE, UNIT_TYPE, POSTAL_CODE, SIGNATURE)
+
+            @param :tr_nr Tracking number
+        """
         FINAL_URI = self.BRING_TRACKING_API % tr_nr
         REQUEST = requests.get(FINAL_URI)
 
@@ -32,6 +37,12 @@ class Bring(object):
         return Struct(DATA)
 
     def postal(self, country, postal):
+        """Returns postal information
+            DATA: (RESULT, POSTAL_TYPE)
+
+            @param :country Country Code
+            @param :postal Postal code
+        """
         FINAL_URI = self.BRING_LOCATION_API % (country, postal)
         REQUEST = requests.get(FINAL_URI)
 
