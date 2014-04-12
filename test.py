@@ -26,7 +26,8 @@ def main():
   pickup = bring.pickup(None, [59.7263078,10.2250463])
   print pickup.NAME
 
-
+  # Print RAW json string
+  print pickup.RAW_string
 
 if __name__ == "__main__":
   main()

@@ -55,7 +55,8 @@ class Bring(object):
     'UNIT_TYPE': EVENT_SET["unitType"],
     'POSTAL_CODE': EVENT_SET["postalCode"],
     'SIGNATURE': EVENT_SET["recipientSignature"]["name"],
-    'RAW': json.loads(REQUEST.text)
+    'RAW': json.loads(REQUEST.text),
+    'RAW_string': str(json.loads(REQUEST.text))
     }
 
     for (i, val) in enumerate(DATA):
@@ -79,7 +80,8 @@ class Bring(object):
     DATA = {
     'RESULT': None,
     'POSTAL_TYPE': None,
-    'RAW': None
+    'RAW': None,
+    'RAW_string': None
     }
 
     if JSON["valid"] == False:
@@ -88,6 +90,7 @@ class Bring(object):
       DATA["RESULT"] = JSON["result"]
       DATA["POSTAL_TYPE"] = JSON["postalCodeType"]
       DATA["RAW"] = json.loads(REQUEST.text)
+      DATA["RAW_string"] = str(json.loads(REQUEST.text))
 
     return Struct(DATA)
 
@@ -112,7 +115,8 @@ class Bring(object):
       'LOCATION_DESCRIPTION': None,
       'OPENING_HOURS_NO': None,
       'OPENING_HOURS_EN': None,
-      'RAW': None
+      'RAW': None,
+      'RAW_string': None
     }
 
     if postal != None and geo != None:
@@ -139,5 +143,6 @@ class Bring(object):
     DATA["OPENING_HOURS_NO"] = JSON["openingHoursNorwegian"]
     DATA["OPENING_HOURS_EN"] = JSON["openingHoursEnglish"]
     DATA["RAW"] = JSON
+    DATA["RAW_string"] = str(JSON)
 
     return Struct(DATA)
