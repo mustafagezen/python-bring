@@ -8,7 +8,7 @@ def main():
   tracking = bring.tracking("TESTPACKAGE-AT-PICKUPPOINT")
 
   # Returns DATA(WEIGHT_KG, STATUS, CITY, DESCRIPTION, COUNTRY, COUNTRY_CODE, UNIT_TYPE, POSTAL_CODE, SIGNATURE, RAW)
-  print str(tracking.RAW.consignmentSet[0]["totalWeightInKgs"])
+  print tracking.RAW.consignmentSet[0]["totalWeightInKgs"]
 
   # Postal test
   postal = bring.postal("NO", 5055)
