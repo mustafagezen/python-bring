@@ -34,7 +34,7 @@ class Bring(object):
 
   def tracking(self, tr_nr):
     """Returns tracking data
-    DATA(WEIGHT_KG, STATUS, CITY, DESCRIPTION, COUNTRY, COUNTRY_CODE, UNIT_TYPE, POSTAL_CODE, SIGNATURE) and RAW
+    DATA(WEIGHT_KG, STATUS, CITY, DESCRIPTION, COUNTRY, COUNTRY_CODE, UNIT_TYPE, POSTAL_CODE, SIGNATURE, RAW, RAW_STRING)
 
     @param :tr_nr Tracking number
     """
@@ -56,7 +56,7 @@ class Bring(object):
     'POSTAL_CODE': EVENT_SET["postalCode"],
     'SIGNATURE': EVENT_SET["recipientSignature"]["name"],
     'RAW': json.loads(REQUEST.text),
-    'RAW_string': str(json.loads(REQUEST.text))
+    'RAW_STRING': str(json.loads(REQUEST.text))
     }
 
     for (i, val) in enumerate(DATA):
@@ -67,7 +67,7 @@ class Bring(object):
 
   def postal(self, country, postal):
     """Returns postal information
-    DATA(RESULT, POSTAL_TYPE) and RAW
+    DATA(RESULT, POSTAL_TYPE, RAW, RAW_STRING)
 
     @param :country Country Code
     @param :postal Postal code
@@ -81,7 +81,7 @@ class Bring(object):
     'RESULT': None,
     'POSTAL_TYPE': None,
     'RAW': None,
-    'RAW_string': None
+    'RAW_STRING': None
     }
 
     if JSON["valid"] == False:
@@ -96,7 +96,7 @@ class Bring(object):
 
   def pickup(self, postal=None, geo=None):
     """Returns the nearest pickup point
-    DATA(NAME, ADDRESS, POSTAL, CITY, COUNTRY_CODE, COUNTY, VISITING_ADDRESS, VISITING_POSTAL, LOCATION_DESCRIPTION, OPENING_HOURS_NO, OPENING_HOURS_EN, RAW)
+    DATA(NAME, ADDRESS, POSTAL, CITY, COUNTRY_CODE, COUNTY, VISITING_ADDRESS, VISITING_POSTAL, LOCATION_DESCRIPTION, OPENING_HOURS_NO, OPENING_HOURS_EN, RAW, RAW_STRING)
 
     @param(optional) :postal Postal code
     @param(optional) :geo Geographic location in array, ex. [59.7263078,10.2250463]
@@ -116,7 +116,7 @@ class Bring(object):
       'OPENING_HOURS_NO': None,
       'OPENING_HOURS_EN': None,
       'RAW': None,
-      'RAW_string': None
+      'RAW_STRING': None
     }
 
     if postal != None and geo != None:
