@@ -27,7 +27,7 @@ def main():
   print pickup.NAME
 
   # Print RAW json string
-  print pickup.RAW_string
+  print pickup.RAW_STRING
 
 if __name__ == "__main__":
   main()
